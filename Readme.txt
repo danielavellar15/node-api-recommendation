@@ -1,0 +1,1 @@
+docker run --name nodejs-api-recommendation -p 80:8080 -d danielavellar15/nodejs-api-recommendation
