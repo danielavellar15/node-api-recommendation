@@ -1,4 +1,5 @@
 const app = require('../src/app');
+const connectDb = require("../src/db/connection");
 
 const port = normalizaPort(process.env.PORT || '3000');
 
@@ -14,5 +15,9 @@ function normalizaPort(val) {
 }
 
 app.listen(port, function () {
-    console.log(`app listening on port ${port}`)
+    console.log(`app listening on port ${port}`);
+
+    connectDb().then(() => {
+        console.log("MongoDb connected");
+    });
 })
