@@ -1,4 +1,4 @@
-const Products = require("../db/Products.model");
+const Catalog = require("../db/Catalog.model");
 
 exports.get = (req, res, next) => {
     res.status(200).send('Requisição recebida com sucesso!');
@@ -12,11 +12,11 @@ exports.getProduct = async (req, res, next) => {
     console.log("teste");
 
     const { filters, type, shopIds } = req.body        
-    let products;
+    let catalog;
 
     const query = {
-        "isDeleted": { $ne: true },
-        "isVisible": true
+        "product.isDeleted": { $ne: true },
+        "product.isVisible": true
     };
 
     if (shopIds) query.shopId = { $in: shopIds };
@@ -24,20 +24,20 @@ exports.getProduct = async (req, res, next) => {
     
     if( type == 'BY_USER') {
         console.log(query)
-        products = await recommendationByUser(query, filters);
-        console.log(products);
+        catalog = await recommendationByUser(query, filters);
+        console.log(catalog);
     } 
     else if (type == 'GLOBAL') {
-        products = await recommendationGlobal(query, filters);
+        catalog = await recommendationGlobal(query, filters);
     }
     
-    res.json(products);
+    res.json(catalog);
 };
 
 async function recommendationByUser(query, filters) {
-    return await Products.find(query).sort({title: 'asc'});
+    return Catalog.find(query);
 }
 
 async function recommendationGlobal(query, filters) {
-    return await Products.find(query).sort({title: 'desc'});
+    return Catalog.find(query);
 }

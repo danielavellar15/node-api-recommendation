@@ -4,6 +4,6 @@ const controller = require('../controllers/recommendationController');
 
 router.post('/', controller.post);
 router.get('/', controller.get);
-router.get('/products', controller.getProduct);
+router.post('/products', controller.getProduct);
 
 module.exports = router;
