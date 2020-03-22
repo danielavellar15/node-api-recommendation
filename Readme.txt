@@ -1,1 +1,1 @@
-docker run --name nodejs-api-recommendation -p 3000:8080 -d danielavellar15/nodejs-api-recommendation
+docker run --name nodejs-api-recommendation -p 3100:8080 -d danielavellar15/nodejs-api-recommendation

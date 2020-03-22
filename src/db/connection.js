@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const Product = require("./Product.model");
+const Products = require("./Products.model");
 
-const connection = "mongodb://localhost:32768/reaction";
+const connection = "mongodb://localhost:27017/reaction";
 
 const connectDb = () => {
     return mongoose.connect(connection);
