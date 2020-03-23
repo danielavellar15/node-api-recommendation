@@ -30,8 +30,10 @@ exports.getProduct = async (req, res, next) => {
     else if (type == 'GLOBAL') {
         catalog = await recommendationGlobal(query, filters);
     }
+
     
-    res.json(catalog);
+    
+    res.json(JSON.stringify(catalog));
 };
 
 async function recommendationByUser(query, filters) {

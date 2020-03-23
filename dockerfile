@@ -14,6 +14,6 @@ COPY --chown=node:node . .
 
 USER node
 
-EXPOSE 8080
+EXPOSE 3100
 
 CMD  [ "node", "./bin/server.js" ]
